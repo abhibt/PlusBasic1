@@ -130,6 +130,23 @@ int x=0;
    	        pw.println("<p>" + line	+ "</p>");
    	        line1 = line1 + line;
    	      }
+   	      
+   	   
+   	   
+   	     //2. Exercise 2: Get the user id details
+   	     url = new URL(
+   	   	        "https://www.googleapis.com/drive/v3/about?fields=user&access_token=" + 
+   	   	        		gs2[0]);
+   	             //"https://www.googleapis.com/auth/youtube?access_token=" +gs2[0]);
+   	   	      pw.println("<p>" + url.toString()	+ "</p>");
+   	   	      conn = url.openConnection();
+   	   	      line1 = "";
+   	   	      reader = new BufferedReader(new InputStreamReader(
+   	   	        conn.getInputStream()));
+   	   	      while ((line = reader.readLine()) != null) {
+   	   	        pw.println("<p>" + line	+ "</p>");
+   	   	        line1 = line1 + line;
+   	   	      }
  }//if 0
      //1. Exercise 1: Get the user id details
  /*    url = new URL(

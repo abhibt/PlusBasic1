@@ -16,6 +16,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
    <servlet-name>ShowParameters</servlet-name>
         <servlet-class>com.example.myproject.ShowParameters</servlet-class>
 </servlet>
+<servlet>
+   <servlet-name>SelectCustomerName</servlet-name>
+        <servlet-class>com.example.myproject.SelectCustomerName</servlet-class>
+</servlet>
+
 	<servlet-mapping>
 		<servlet-name>PlusBasic1</servlet-name>
 		<url-pattern>/plusbasic1</url-pattern>
@@ -28,6 +33,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
             <servlet-name>ShowParameters</servlet-name>
             <url-pattern>/ShowParameters</url-pattern>
      </servlet-mapping>
+    <servlet-mapping>
+            <servlet-name>SelectCustomerName</servlet-name>
+            <url-pattern>/SelectCustomerName</url-pattern>
+     </servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
                 <second-welcome-file>googlecd83791f95337cd0.html</second-welcome-file>

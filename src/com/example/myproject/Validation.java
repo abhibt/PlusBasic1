@@ -55,8 +55,8 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
 		res.setContentType("text/html");
 	    PrintWriter pw = res.getWriter( );
 	    {
-	      pw.println("<h3>Thankyou, you are VALID</h3>");
-	      pw.println("<h3>Got String 0</h3>");
+	      pw.println("<h3>Thankyou, you are VALID User</h3>");
+	      pw.println("<h3>Home Screen </h3>");
 	    } 
     
 
@@ -72,16 +72,16 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
       URLConnection conn = url.openConnection();
       conn.setDoOutput(true);
       
-      pw.println("<a href='" + urlParameters	+ "'>log in with google</a>");
+ //     pw.println("<a href='" + urlParameters	+ "'>log in with google</a>");
       
-      pw.println("<h3>Got String 1</h3>");
+     // pw.println("<h3>Got String 1</h3>");
       OutputStreamWriter writer = new OutputStreamWriter(
         conn.getOutputStream());
-      pw.println("<h3>Got String 2</h3>");
+     // pw.println("<h3>Got String 2</h3>");
       writer.write(urlParameters);
-      pw.println("<h3>Got String 3</h3>");
+     // pw.println("<h3>Got String 3</h3>");
       writer.flush();
-      pw.println("<h3>Got String 4</h3>");
+     // pw.println("<h3>Got String 4</h3>");
 
 
       String line1 = "";
@@ -92,7 +92,7 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
       boolean gs;
       while ((line = reader.readLine()) != null)
       {
-    	  pw.println("<p>" + line	+ "</p>");
+  //  	  pw.println("<p>" + line	+ "</p>");
     	  gs = line.contains("access_token");
     	  if (gs == true)
     	  {
@@ -100,8 +100,9 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
     	  }
     	  line1 = line1 + line;
       }
-
-  /*
+int x=0;
+ if(x ==1)
+ {
      // String gs = line1;
     //JSONParser parser = new JSONParser();
     //Object obj =  parser.parse(gs);
@@ -129,7 +130,7 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
    	        pw.println("<p>" + line	+ "</p>");
    	        line1 = line1 + line;
    	      }
-     
+ }//if 0
      //1. Exercise 1: Get the user id details
  /*    url = new URL(
         "https://www.googleapis.com/drive/v3/files?corpus=user&access_token=" + 
@@ -144,7 +145,8 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
         line1 = line1 + line;
       }
       */
- /*  	      
+ if( x ==1)
+ {
       url = new URL("https://maps.googleapis.com/maps/api/place/textsearch/json?query=174+Sector+1+HSR+Layout&key="+
       "AIzaSyCRQdCs6V4JEIgUamAg4EkilgH4cWgH6XQ");
       pw.println("<p>" + url.toString()	+ "</p>");
@@ -169,15 +171,15 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
         pw.println("<p>" + line	+ "</p>");
         line1 = line1 + line;
       }
-*/
+ }//if x =1
      //pw.println("<p>" + line	+ "</p>");
-     pw.println(" <a href=\"./index1.html\">New Index File</a>");
+     pw.println(" <a href=\"./index1.html\">Google Maps File</a>");
  
      //pw.println("<p>" + line	+ "</p>");
-     pw.println(" <a href=\"./BookingForm.html\">Booking File</a>");
-     pw.close( );
+     pw.println(" <a href=\"./BookingForm.html\">Cargo Booking File</a>");
+     //pw.close( );
      
-     pw.println(" <a href=\"./Report.html\">Generate Report</a>");
+     pw.println(" <a href=\"SelectCustomerName\">Generate Cargo Report</a>");
      pw.close( );
 
       GooglePojo data = (GooglePojo)new Gson().fromJson(line1, GooglePojo.class);

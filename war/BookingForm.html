@@ -2,6 +2,7 @@
 <HTML>
 <HEAD>
   <TITLE>A Sample FORM using POST</TITLE>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyDPATt_y9VsPfeypeOIUU1QIpnGa2lv14M"></script>
 </HEAD>
 
 <BODY BGCOLOR="#FDF5E6">
@@ -13,7 +14,8 @@
   <INPUT TYPE="TEXT" NAME="CustomerName"><BR>
 
   From Address:
-  <TEXTAREA NAME="fromaddress" ROWS=3 COLS=40></TEXTAREA><BR>
+ <!--  <TEXTAREA NAME="fromaddress" ROWS=3 COLS=40></TEXTAREA><BR> -->
+  <input id="pac-input" class="controls" type="text" placeholder="Enter a location" style="margin: 0px auto;">
   
   Shipping Address:
   <TEXTAREA NAME="toaddress" ROWS=3 COLS=40></TEXTAREA><BR>
@@ -39,6 +41,22 @@
     <INPUT TYPE="SUBMIT" VALUE="Submit Order">
   </CENTER>
 </FORM>
+    
+    <script>
+        google.maps.event.addDomListener(window, 'load', initialize);
+        function initialize() {
+            var input = document.getElementById('pac-input');
+           // var inputDes = document.getElementById('pac-inputDestination');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+           // var autocomplete = new google.maps.places.Autocomplete(inputDes);
+            autocomplete.addListener('place_changed', function () {
+                var place = autocomplete.getPlace();
+                console.log(place);
+                console.log(place.geometry['location'].lat());
+                console.log(place.geometry['location'].lng());
+            });
 
+        }
+    </script>
 </BODY>
 </HTML>

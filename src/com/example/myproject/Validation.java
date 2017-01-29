@@ -30,8 +30,6 @@ import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.net.URLConnection;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -85,6 +83,7 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
       writer.flush();
       pw.println("<h3>Got String 4</h3>");
 
+
       String line1 = "";
       BufferedReader reader = new BufferedReader(new InputStreamReader(
         conn.getInputStream()));
@@ -102,7 +101,7 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
     	  line1 = line1 + line;
       }
 
-  
+  /*
      // String gs = line1;
     //JSONParser parser = new JSONParser();
     //Object obj =  parser.parse(gs);
@@ -145,7 +144,7 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
         line1 = line1 + line;
       }
       */
-   	      
+ /*  	      
       url = new URL("https://maps.googleapis.com/maps/api/place/textsearch/json?query=174+Sector+1+HSR+Layout&key="+
       "AIzaSyCRQdCs6V4JEIgUamAg4EkilgH4cWgH6XQ");
       pw.println("<p>" + url.toString()	+ "</p>");
@@ -170,12 +169,15 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws Serv
         pw.println("<p>" + line	+ "</p>");
         line1 = line1 + line;
       }
-
+*/
      //pw.println("<p>" + line	+ "</p>");
      pw.println(" <a href=\"./index1.html\">New Index File</a>");
  
      //pw.println("<p>" + line	+ "</p>");
-     pw.println(" <a href=\"./index2.html\">2nd New Index File</a>");
+     pw.println(" <a href=\"./BookingForm.html\">Booking File</a>");
+     pw.close( );
+     
+     pw.println(" <a href=\"./Report.html\">Generate Report</a>");
      pw.close( );
 
       GooglePojo data = (GooglePojo)new Gson().fromJson(line1, GooglePojo.class);

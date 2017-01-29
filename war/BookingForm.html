@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+  <TITLE>A Sample FORM using POST</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FDF5E6">
+<H1 ALIGN="CENTER">Book Items for Shipping</H1>
+
+<FORM ACTION="/ShowParameters"
+      METHOD="POST">
+  Customer Name:
+  <INPUT TYPE="TEXT" NAME="CustomerName"><BR>
+
+  From Address:
+  <TEXTAREA NAME="fromaddress" ROWS=3 COLS=40></TEXTAREA><BR>
+  
+  Shipping Address:
+  <TEXTAREA NAME="toaddress" ROWS=3 COLS=40></TEXTAREA><BR>
+  
+  Cargo Length:
+  <INPUT TYPE="TEXT" NAME="cargolength"><BR>
+  Cargo Breadth:
+  <INPUT TYPE="TEXT" NAME="cargobreadth"><BR>
+  Cargo Width:
+  <INPUT TYPE="TEXT" NAME="cargowidth"><BR>
+  Cargo Weight:
+  <INPUT TYPE="TEXT" NAME="cargoweight"><BR>
+   
+  Quantity:
+  <INPUT TYPE="TEXT" NAME="quantity"><BR>
+  
+  Comments:
+  <INPUT TYPE="TEXT" NAME="comments"><BR>
+  
+  <HR>
+  
+  <CENTER>
+    <INPUT TYPE="SUBMIT" VALUE="Submit Order">
+  </CENTER>
+</FORM>
+
+</BODY>
+</HTML>

@@ -3,6 +3,8 @@ package com.example.myproject;
 import javax.servlet.*;  				
 import javax.servlet.http.*;
 
+
+import com.google.cloud.sql.jdbc.ResultSet;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -30,9 +32,13 @@ import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 
 
 
@@ -47,6 +53,7 @@ public class Validation extends HttpServlet
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+private ResultSet rs;
 
 public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
   {
@@ -189,15 +196,67 @@ int x=0;
         line1 = line1 + line;
       }
  }//if x =1
-     //pw.println("<p>" + line	+ "</p>");
-     pw.println(" <a href=\"./index1.html\">Google Maps File</a>");
  
-     //pw.println("<p>" + line	+ "</p>");
-     pw.println(" <a href=\"./BookingForm.html\">Cargo Booking File</a>");
-     //pw.close( );
-     
-     pw.println(" <a href=\"SelectCustomerName\">Generate Cargo Report</a>");
-     pw.close( );
+ 
+ /*Testing SQL connection
+    */
+ int y= 1;
+ if(y==1)/*Try out write to google cloud sql*/
+ {
+	  String url1 = null;
+	  try {
+			Class.forName("com.mysql.jdbc.GoogleDriver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		url1 = "jdbc:google:mysql://testoauth-1345:us-central1:abhitestoauth3/test?user=abhit&password=abhit";
+		
+		java.sql.Connection conn1 = null;
+		try {
+			conn1 = (java.sql.Connection) DriverManager.getConnection(url1);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			//pw.println( "<a href=\" + err.getMessage( ) + \"</a>");
+			pw.println(" <a href=\"./index1.html\">Testing2</a>");
+			e.printStackTrace();
+			
+		}
+		
+		//pw.println( "<a href=\" + err.getMessage( ) + \"</a>");
+		pw.println(" <a href=\"./index1.html\">Testing3</a>");
+		java.sql.ResultSet  rs=null;
+//		rs= (java.sql.ResultSet ) conn1.createStatement().executeQuery("CREATE TABLE CUSTOMERS;");
+//		rs= (java.sql.ResultSet ) conn1.createStatement().executeQuery("USE test;");
+		rs= (java.sql.ResultSet ) conn1.createStatement().executeQuery("SELECT * FROM CUSTOMERS;");
+
+		pw.println("<table border='1'>");
+		pw.println("<tr>");
+		pw.println("<td><b>Nombre</b></td>");
+		pw.println("<td><b>Usuario</b></td>");
+		pw.println("</tr>");
+		
+		pw.println("<tr>");
+		pw.println("<td><b>Nombre1</b></td>");
+		pw.println("<td><b>Usuario1</b></td>");
+		pw.println("</tr>");
+
+		while (rs.next()) 
+		{
+			pw.println("<tr>");
+			pw.println("<td>" + rs.getString(1) + "</td>");
+			pw.println("<td>" + rs.getString(2) + "</td>");
+			pw.println("</tr>");
+		}
+		
+		pw.println("</table>");
+		
+		conn1.close();
+
+ }
+      pw.close( );
 
       GooglePojo data = (GooglePojo)new Gson().fromJson(line1, GooglePojo.class);
       writer.close();
@@ -216,7 +275,10 @@ int x=0;
     catch (IOException e)
     {
       e.printStackTrace();
-    }
+    } catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   } 
 
 public void doGet(HttpServletRequest req, HttpServletResponse resp)

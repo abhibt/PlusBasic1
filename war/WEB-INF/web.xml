@@ -39,7 +39,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
      </servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-                <second-welcome-file>googlecd83791f95337cd0.html</second-welcome-file>
+		<welcome-file>index.html</welcome-file>		
+                
 	</welcome-file-list>
 </web-app>

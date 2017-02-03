@@ -1,8 +1,16 @@
 package com.example.myproject;
 
 import java.io.*;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import com.google.appengine.api.utils.SystemProperty;
+import com.google.cloud.sql.jdbc.Connection;
+import com.google.cloud.sql.jdbc.ResultSet;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.*;
 
 /** Shows all the parameters sent to the servlet via either
@@ -52,7 +60,9 @@ public void doGet(HttpServletRequest request,
         out.println("</UL>");
       }
     }
+ 
     out.println("</TABLE>\n>");
+ 
     out.println("<INPUT TYPE=\"SUBMIT\" VALUE=\"Confirm\">");
     out.println("</BODY></HTML>");
   }

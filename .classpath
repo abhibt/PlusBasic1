@@ -42,5 +42,6 @@
 	<classpathentry kind="lib" path="C:/google-api-java-client/libs/transaction-api-1.1.jar"/>
 	<classpathentry kind="lib" path="C:/google-api-java-client/libs/xpp3-1.1.4c.jar"/>
 	<classpathentry kind="lib" path="C:/google-api-java-client/libs/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/google-api-java-client/libs/mysql-socket-factory-1.0.2.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
